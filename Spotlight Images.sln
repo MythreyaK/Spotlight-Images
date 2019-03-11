@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28705.295
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotlight Images", "Spotlight Images\Spotlight Images.csproj", "{FD4D84E8-81C2-44F1-8B54-4DD5364CDF51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD4D84E8-81C2-44F1-8B54-4DD5364CDF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4D84E8-81C2-44F1-8B54-4DD5364CDF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4D84E8-81C2-44F1-8B54-4DD5364CDF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4D84E8-81C2-44F1-8B54-4DD5364CDF51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {788E7982-DDA4-4525-ABD0-4A998D78D54D}
+	EndGlobalSection
+EndGlobal
