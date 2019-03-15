@@ -65,10 +65,11 @@ namespace Spotlight_Images
             spotlightPath = String.Format(spotlightPath, username);
 
             // Add a filesystem watcher to that location
-            FileSystemWatcher spotlightImgWatcher = new FileSystemWatcher(spotlightPath);
-            spotlightImgWatcher.NotifyFilter = NotifyFilters.LastWrite;
+            FileSystemWatcher spotlightImgWatcher = new FileSystemWatcher(spotlightPath)
+            {
+                NotifyFilter = NotifyFilters.FileName
+            };
             spotlightImgWatcher.Created += OnFSChanged;
-            spotlightImgWatcher.Changed += OnFSChanged;
 
             // Start the watcher
             spotlightImgWatcher.EnableRaisingEvents = true;
@@ -80,11 +81,30 @@ namespace Spotlight_Images
 
         private void OnFSChanged(object sender, FileSystemEventArgs e)
         {
-            // Read the file in question, get the first few bytes, 
-            // if jpg | jpeg, save the file to the users directory
+            // File that's been created might still be under access
+            // by the writer, so wait for, say 5 seconds before reading it
+            System.Threading.Thread.Sleep(5 * 1000);
 
+            // Now read the file in question, get the first 2 bytes, 
+            // if jpg | jpeg, save the file to the user's directory
+            FileStream flHandle = File.OpenRead(e.FullPath);
+            Byte[] arr = new Byte[2];
+            flHandle.Read(arr, 0, 2);
+
+            // Close the file 
+            flHandle.Close();
+
+            // JPG | JPEG has FF-FE as the first 2 'Magic' bytes
+            if (arr[0] == 255 && arr[1] == 216)
+            {
+                // JPG | JPEG file, so save it 
+                // Get the file name 
+                string fileName = e.FullPath.Substring(e.FullPath.LastIndexOf("\\") + 1);
+                string output = @"G:\Output\";
+                output = string.Concat(output, fileName, ".jpg");
+                System.IO.File.Copy(e.FullPath, output);
+            }
         }
-
 
         protected override void OnStop()
         {
