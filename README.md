@@ -52,7 +52,7 @@ This process runs under the `LocalSystem` privileged user which
 permissions to access the directory where the images are stored.
 
 ##### TODO:
-* Add an installer to allow easy intall/uninstall
+* Add an installer to allow easy install/uninstall
 * Allow user to specify save directory during install
 * Find a way to run the service as a less privileged user
 
